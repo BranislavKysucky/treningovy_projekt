@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Treningovy projekt{% endblock %}
+
+{% block body %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;border-color:#999;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}
+        .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+        .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+
+    <table class="tg" style="margin-left: 12rem;
+margin-top: 6rem;">
+        <colgroup>
+            <col style="width: 237px">
+            <col style="width: 304px">
+            <col style="width: 318px">
+            <col style="width: 204px">
+        </colgroup>
+        <tr>
+            <th class="tg-0pky">Osobne číslo<br></th>
+            <th class="tg-0lax">Meno</th>
+            <th class="tg-0lax">Datum a čas príchodu</th>
+            <th class="tg-0lax">Datum a čas odchodu</th>
+            <th class="tg-0lax">Edit</th>
+        </tr>
+        {% for zaznamy in zaznam %}
+        <tr>
+            <td  class="tg-0lax">
+                {{ zaznamy.osobneCislo }}
+                <br></td>
+            <td class="tg-0lax">
+                    {{ zaznamy.meno }}
+                <br></td>
+            <td class="tg-0lax">
+                    {{ zaznamy.datumCasOdchodu | date('d/m/Y') }}
+                <br></td>
+            <td class="tg-0lax">
+                    {{ zaznamy.datumCasPrichodu | date('d/m/Y') }}
+            </td>
+            <td class="tg-0lax">
+                <a class="fa fa-edit" style="font-size:24px" href="http://localhost:8000/tabulka/zaznam/{{ zaznamy.id }}/edit"> </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if is_granted('ADMIN_USER') %}
+    <div class="col">
+        <button id="add-zaznam-btn" class="btn btn-success float-right" ><i class="fas fa-plus-circle"></i></button>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('/js/admin.js') }}"></script>
+{% endblock %}
+
+

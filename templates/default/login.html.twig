@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Treningovy projekt{% endblock %}
+
+{% block body %}
+
+
+<style>
+    #subscribe,
+    #login{
+
+
+        position: absolute;
+        top: 0px;
+        width: 87%;
+        padding: 18px 6% 60px 6%;
+        margin: 0 0 35px 0;
+        background: rgb(247, 247, 247);
+        border: 1px solid rgba(147, 184, 189,0.8);
+        box-shadow:
+                0pt 2px 5px rgba(105, 108, 109,  0.7),
+                0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+        border-radius: 5px;
+    }
+    #login{
+        z-index: 22;
+    }
+    .animate form2 {
+        margin: 0rem!important;
+        padding: 4rem!important;
+        /*margin-left: 24.3rem;*/
+        /*margin-top: 2rem;*/
+
+        margin-left: 9rem!important;
+        margin-top: 8rem!important;
+
+    }
+</style>
+
+
+<div id="wrapper">
+    <div id="login" class="animate form2" style="margin-left: 7rem; margin-top:3rem ;">
+        <form  action="mysuperscript.php" style="margin-left: 40rem;" autocomplete="on">
+            <h1 style="margin-left: 2rem;">Prihlásiť sa</h1>
+            <p>
+                <label for="username" class="uname" data-icon="u" > Meno </label>
+                <input  id="username" name="username" required="required" type="text"/>
+            </p>
+            <p>
+                <label for="password" class="youpasswd" data-icon="p"> Heslo </label>
+                <input id="password" name="password" required="required" type="password" />
+            </p>
+            <p class="keeplogin">
+                <input style="margin-left: 3rem;" type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+                <label for="loginkeeping">Ostat prihlaseny</label>
+            </p>
+            <p class="login button">
+                <input type="submit" style="margin-left: 4rem;" value="Prihlásiť sa" />
+            </p>
+        </form>
+    </div>
+
+
+    </div>
+
+</div>
+</div>
+
+{% endblock %}

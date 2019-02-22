@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Edit </h1>
+
+    {{ form_start(ZaznamType) }}
+    {{ form_row(ZaznamType.osobne_cislo, {
+        label: 'Osobne cislo'
+    }) }}
+    {{ form_row(ZaznamType.meno) }}
+    {{ form_row(ZaznamType.heslo) }}
+    {{ form_row(ZaznamType.meno) }}
+    {{ form_row(ZaznamType.datumCasPrichodu) }}
+    {{ form_row(ZaznamType.datumCasOdchodu) }}
+
+    <button type="submit" class="btn btn-primary">Update!</button>
+    {{ form_end(ZaznamType) }}
+{% endblock %}
