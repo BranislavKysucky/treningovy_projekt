@@ -19,7 +19,9 @@ class DefaultController extends AbstractController
     public function login (EntityManagerInterface $em) {
 
 
-        return $this->render('default/login.html.twig');
+//        return $this->render('default/login.html.twig');
+
+        return $this->redirectToRoute('app_login');
 
     }
 

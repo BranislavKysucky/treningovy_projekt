@@ -21,12 +21,21 @@ margin-top: 6rem;">
             <col style="width: 318px">
             <col style="width: 204px">
         </colgroup>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="col">
+                <button onclick="location.href = 'https://localhost:8000/tabulka/new';" id="myButton" class="btn btn-success float-right" >Pridaj novy zaznam</button>
+            </div>
+
+        {% endif %}
         <tr>
             <th class="tg-0pky">Osobne číslo<br></th>
             <th class="tg-0lax">Meno</th>
             <th class="tg-0lax">Datum a čas príchodu</th>
             <th class="tg-0lax">Datum a čas odchodu</th>
+           {% if is_granted('ROLE_ADMIN') %}
             <th class="tg-0lax">Edit</th>
+            <th class="tg-0lax">Delete</th>
+            {% endif %}
         </tr>
         {% for zaznamy in zaznam %}
         <tr>
@@ -42,17 +51,18 @@ margin-top: 6rem;">
             <td class="tg-0lax">
                     {{ zaznamy.datumCasPrichodu | date('d/m/Y') }}
             </td>
+            {% if is_granted('ROLE_ADMIN') %}
             <td class="tg-0lax">
                 <a class="fa fa-edit" style="font-size:24px" href="http://localhost:8000/tabulka/zaznam/{{ zaznamy.id }}/edit"> </a>
             </td>
+            <td class="tg-0lax">
+                <a class="fa fa-edit" style="font-size:24px" href="http://localhost:8000/tabulka/zaznam/{{ zaznamy.id }}/delete"> </a>
+            </td>
+            {% endif %}
         </tr>
+
         {% endfor %}
     </table>
-    {% if is_granted('ADMIN_USER') %}
-    <div class="col">
-        <button id="add-zaznam-btn" class="btn btn-success float-right" ><i class="fas fa-plus-circle"></i></button>
-    </div>
-    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pridat noveho clena</h1>
+
+    {{ form_start(ZaznamType) }}
+    {{ form_row(ZaznamType.osobne_cislo) }}
+    {{ form_row(ZaznamType.meno) }}
+    {{ form_row(ZaznamType.heslo) }}
+    {{ form_row(ZaznamType.datumCasOdchodu) }}
+    {{ form_row(ZaznamType.datumCasPrichodu) }}
+
+
+    <button type="submit" class="btn btn-primary">Pridaj</button>
+
+
+    {{ form_end(ZaznamType) }}
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="{{ asset('js/algolia-autocomplete.js') }}"></script>
+    <script src="{{ asset('js/admin_article_form.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
